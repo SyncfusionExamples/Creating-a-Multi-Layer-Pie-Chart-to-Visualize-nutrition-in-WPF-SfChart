@@ -23,6 +23,7 @@ The chart will be structured as follows:
 
 Refer to the following image.
 
+![MultiLayeredPie](https://github.com/user-attachments/assets/e08b0aca-d7c2-444e-ab77-d176bc79be4d)
 
 ## Troubleshooting:
 ### Path too long exception:
