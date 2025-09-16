@@ -1,4 +1,4 @@
-# Creating-a-Multi-Layer-Pie-Chart-to-Visualize-nutrition-in-WPF-SfChart
+# Creating a Multi Layer Pie Chart to Visualize Nutrition using WPF SfChart
 This blog will guide you through creating a multi-layered pie chart in WPF using the [Syncfusion Circular Chart control](https://www.syncfusion.com/wpf-controls/charts/2d-chart). We’ll build an interactive chart that not only visualizes vitamin and food source data but also dynamically displays detailed information using the [Syncfusion Diagram](https://www.syncfusion.com/wpf-controls/diagram) control upon selection.
 
 ## Understanding Circular Charts
