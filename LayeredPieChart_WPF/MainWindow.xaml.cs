@@ -8,13 +8,13 @@ namespace LayeredPieChart_WPF
     {
         private class VitaminColorInfo
         {
-            public string Group;
+            public string? Group;
             public Color Color;
         }
 
         private class VitaminGroupColorInfo
         {
-            public string Group;
+            public string? Group;
             public Color BaseColor;
             public int Count;
         }
@@ -38,7 +38,7 @@ namespace LayeredPieChart_WPF
         };
 
         MultiParent parent;
-        private string lastSelectedSegment;
+        private string? lastSelectedSegment;
 
         public MainWindow()
         {
@@ -50,14 +50,14 @@ namespace LayeredPieChart_WPF
         {
             if (e.SelectedSegment?.Item == null) return;
 
-            string vitaminGroup = "";
+            string? vitaminGroup = "";
             if (e.SelectedSegment.Item is FoodSource foodSource)
             {
                 vitaminGroup = foodSource.VitaminGroup;
             }
             else if (e.SelectedSegment.Item is Vitamin vitamin)
             {
-                vitaminGroup = vitamin.Name.Replace("Vitamin ", "");
+                vitaminGroup = vitamin.Name?.Replace("Vitamin ", "");
             }
 
             if (string.IsNullOrEmpty(vitaminGroup) || lastSelectedSegment == vitaminGroup)

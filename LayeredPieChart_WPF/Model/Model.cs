@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Media;
 
@@ -6,9 +7,9 @@ namespace LayeredPieChart_WPF
 {
     public abstract class ModelBase : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
@@ -16,11 +17,11 @@ namespace LayeredPieChart_WPF
 
     public class Vitamin : ModelBase
     {
-        private string _name;
+        private string? _name;
         private double _value;
-        private Brush _color;
+        private Brush? _color;
 
-        public string Name
+        public string? Name
         {
             get => _name;
             set
@@ -46,7 +47,7 @@ namespace LayeredPieChart_WPF
             }
         }
 
-        public Brush Color
+        public Brush? Color
         {
             get => _color;
             set
@@ -62,12 +63,12 @@ namespace LayeredPieChart_WPF
 
     public class FoodSource : ModelBase
     {
-        private string _source;
+        private string? _source;
         private double _value;
-        private string _vitaminGroup;
-        private Brush _color;
+        private string? _vitaminGroup;
+        private Brush? _color;
 
-        public string Source
+        public string? Source
         {
             get => _source;
             set
@@ -93,7 +94,7 @@ namespace LayeredPieChart_WPF
             }
         }
 
-        public string VitaminGroup
+        public string? VitaminGroup
         {
             get => _vitaminGroup;
             set
@@ -106,7 +107,7 @@ namespace LayeredPieChart_WPF
             }
         }
 
-        public Brush Color
+        public Brush? Color
         {
             get => _color;
             set
@@ -122,17 +123,17 @@ namespace LayeredPieChart_WPF
 
     public class FoodSourceInfo
     {
-        public string Name { get; set; }
-        public string Calories { get; set; }
+        public string? Name { get; set; }
+        public string? Calories { get; set; }
     }
 
     public class VitaminData
     {
-        public string Name { get; set; }
-        public string Color1 { get; set; }
-        public string Color2 { get; set; }
-        public string Color3 { get; set; }
-        public List<FoodSourceInfo> FoodSources { get; set; }
+        public string? Name { get; set; }
+        public string? Color1 { get; set; }
+        public string? Color2 { get; set; }
+        public string? Color3 { get; set; }
+        public List<FoodSourceInfo>? FoodSources { get; set; }
     }
 
     public class ItemInfo
@@ -142,6 +143,7 @@ namespace LayeredPieChart_WPF
             this.NodeId = nodeId;
             this.NodeColor = color;
             this.NodeName = nodeName;
+            this.ReportingPerson = new List<string>();
         }
 
         public string NodeColor { get; set; }

@@ -7,7 +7,7 @@ using Syncfusion.UI.Xaml.Diagram.Layout;
 
 namespace LayeredPieChart_WPF
 {
-    public class VitaminFoodViewModel : INotifyPropertyChanged
+    public class VitaminFoodViewModel : ModelBase
     {
         public ObservableCollection<Vitamin> Vitamins { get; set; }
         public ObservableCollection<FoodSource> FoodSources { get; set; }
@@ -44,13 +44,6 @@ namespace LayeredPieChart_WPF
                 new FoodSource { Source = "Sunflower Seeds", Value = 12, VitaminGroup = "E", Color = new SolidColorBrush(Color.FromRgb(8, 125, 124)) }
             };
 
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 
@@ -164,26 +157,38 @@ namespace LayeredPieChart_WPF
 
             // Add the top-level vitamin node
             string parentNodeId = "n11";
-            data.Add(new ItemInfo(parentNodeId, vitaminInfo.Color1, vitaminInfo.Name));
+            if (vitaminInfo.Color1 != null && vitaminInfo.Name != null)
+            {
+                data.Add(new ItemInfo(parentNodeId, vitaminInfo.Color1, vitaminInfo.Name));
+            }
 
             // Loop through the food sources to create child and grandchild nodes
-            for (int i = 0; i < vitaminInfo.FoodSources.Count; i++)
+            if (vitaminInfo.FoodSources != null)
             {
-                var foodSource = vitaminInfo.FoodSources[i];
-                string foodNodeId = $"n2{i + 1}";
-                string calorieNodeId = $"n3{i + 1}";
-
-                // Add food source node (Level 2)
-                data.Add(new ItemInfo(foodNodeId, vitaminInfo.Color2, foodSource.Name)
+                for (int i = 0; i < vitaminInfo.FoodSources.Count; i++)
                 {
-                    ReportingPerson = new List<string> { parentNodeId }
-                });
+                    var foodSource = vitaminInfo.FoodSources[i];
+                    string foodNodeId = $"n2{i + 1}";
+                    string calorieNodeId = $"n3{i + 1}";
 
-                // Add calorie info node (Level 3)
-                data.Add(new ItemInfo(calorieNodeId, vitaminInfo.Color3, foodSource.Calories)
-                {
-                    ReportingPerson = new List<string> { foodNodeId }
-                });
+                    // Add food source node (Level 2)
+                    if (vitaminInfo.Color2 != null && foodSource.Name != null)
+                    {
+                        data.Add(new ItemInfo(foodNodeId, vitaminInfo.Color2, foodSource.Name)
+                        {
+                            ReportingPerson = new List<string> { parentNodeId }
+                        });
+                    }
+
+                    // Add calorie info node (Level 3)
+                    if (vitaminInfo.Color3 != null && foodSource.Calories != null)
+                    {
+                        data.Add(new ItemInfo(calorieNodeId, vitaminInfo.Color3, foodSource.Calories)
+                        {
+                            ReportingPerson = new List<string> { foodNodeId }
+                        });
+                    }
+                }
             }
 
             return data;
