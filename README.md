@@ -29,4 +29,4 @@ Refer to the following image.
 ### Path too long exception:
 If you are facing a "Path too long" exception when building this example project, close Visual Studio and rename the repository to a shorter name before building the project.
 
-For a step-by-step procedure, refer to the blog on [Creating-a-Multi-Layer-Pie-Chart-to-Visualize-nutrition-in-WPF-SfChart blog]().
+For a step-by-step procedure, refer to the blog on [Creating-a-Multi-Layer-Pie-Chart-to-Visualize-nutrition-in-WPF-SfChart blog](https://www.syncfusion.com/blogs/post/multi-layer-pie-chart-wpf).
