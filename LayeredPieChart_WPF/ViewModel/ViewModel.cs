@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Media;
 using Syncfusion.UI.Xaml.Diagram;
 using Syncfusion.UI.Xaml.Diagram.Layout;
@@ -71,7 +72,7 @@ namespace LayeredPieChart_WPF
                     Type = LayoutType.Hierarchical,
                     Orientation = TreeOrientation.LeftToRight,
                     AvoidSegmentOverlapping = false,
-
+                    Margin = new Thickness(15, 0, 0, 0),
                     HorizontalSpacing = 40,
                     VerticalSpacing = 100,
                 },
